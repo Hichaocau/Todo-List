@@ -109,8 +109,7 @@ class todoMain {
 
   init() {
     let data = JSON.parse(localStorage.getItem("todoList"));
-    data.forEach((item, index) => {
-      item.id = index;
+    data.forEach((item) => {
       this.handleTodos(item);
     })
   }
