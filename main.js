@@ -108,10 +108,12 @@ class todoMain {
   }
 
   init() {
-    let data = JSON.parse(localStorage.getItem("todoList"));
-    data.forEach((item) => {
-      this.handleTodos(item);
-    })
+    if (localStorage.length > 0) {
+      let data = JSON.parse(localStorage.getItem("todoList"));
+      data.forEach((item) => {
+        this.handleTodos(item);
+      })
+    }
   }
 }
 const todoObj = new todoMain()

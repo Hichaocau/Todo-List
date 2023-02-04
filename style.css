@@ -79,6 +79,7 @@ button {
 	font-size: 20px;
   color: #9495A5;
 	width: 100%;
+  padding-right: 16px;
 }
 .form input.active {
   background-color: #25273D;
