@@ -1,19 +1,19 @@
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
-const form = $("form")
-const input = $("input")
-const todos = $(".todos")
-const count = $(".number")
-const clearCompleted = $(".clear-completed")
-const clearAll = $(".clear-all")
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const form = $("form");
+const input = $("input");
+const todos = $(".todos");
+const count = $(".number");
+const clearCompleted = $(".clear-completed");
+const clearAll = $(".clear-all");
 class todoMain {
   constructor() {
     this.init();
     this.countTodos();
   }
   handleTodos(data) {
-    let todoItem = document.createElement("li")
-    todoItem.classList.add('uncompleted')
+    let todoItem = document.createElement("li");
+    todoItem.classList.add('uncompleted');
     todoItem.innerHTML = `
       <input class="check" type="checkbox">
       <input class="item-text" type="text" readonly>
@@ -21,10 +21,10 @@ class todoMain {
       <i class="pr-12 op-0 fa-solid fa-pen-to-square"></i>
       <i class="op-0 icon-delete fas fa-trash"></i>
     `
-    let iconEdit = todoItem.querySelector('.fa-pen-to-square')
-    let iconSave = todoItem.querySelector('.fa-check')
-    let task = todoItem.querySelector('.item-text')
-    task.value = data.text
+    let iconEdit = todoItem.querySelector('.fa-pen-to-square');
+    let iconSave = todoItem.querySelector('.fa-check');
+    let task = todoItem.querySelector('.item-text');
+    task.value = data.text;
 
     if(data.status === "completed"){
       todoItem.setAttribute("class", "completed");
@@ -47,16 +47,16 @@ class todoMain {
     });
     // edit task
     iconEdit.addEventListener("click", (e) => {
-      iconSave.classList.toggle("d-none")
-      iconEdit.classList.toggle("d-none")
+      iconSave.classList.toggle("d-none");
+      iconEdit.classList.toggle("d-none");
       task.removeAttribute("readonly");
       task.style.opacity = 0.4;
 			task.focus();
       this.saveTodoList();
     });
     iconSave.addEventListener("click", (e) => {
-      iconSave.classList.toggle("d-none")
-      iconEdit.classList.toggle("d-none")
+      iconSave.classList.toggle("d-none");
+      iconEdit.classList.toggle("d-none");
       task.setAttribute("readonly", "readonly");
       task.style.opacity = 1;
       this.saveTodoList();
@@ -73,12 +73,12 @@ class todoMain {
     let listItemChecked = $$("[checked]");
     if (listItemChecked.length > 0) {
       listItemChecked.forEach((e) => {
-        e.parentElement.remove()
-      })
+        e.parentElement.remove();
+      });
     }
     else {
       alert("Please select tasks");
-    }
+    };
     this.saveTodoList();
   }
 
@@ -113,18 +113,18 @@ class todoMain {
       data.forEach((item) => {
         this.handleTodos(item);
       })
-    }
+    };
   }
 }
-const todoObj = new todoMain()
+const todoObj = new todoMain();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if(input.value){
     todoObj.handleTodos({
       text: input.value.trim()
-    })
-    todoObj.saveTodoList()
+    });
+    todoObj.saveTodoList();
   };
   input.value = "";
 })
@@ -137,11 +137,11 @@ clearAll.addEventListener('click', () => {
 })
 
 // change color
-const body = $("body")
-const app = $(".app")
-const footer = $(".footer")
-const sun = $(".fa-sun")
-const moon = $(".fa-moon")
+const body = $("body");
+const app = $(".app");
+const footer = $(".footer");
+const sun = $(".fa-sun");
+const moon = $(".fa-moon");
 function colorMode() {
   sun.classList.toggle("d-none");
   moon.classList.toggle("d-none");
@@ -153,8 +153,8 @@ function colorMode() {
   input.classList.toggle("active");
 }
 moon.addEventListener('click', () => {
-  colorMode()
-})
+  colorMode();
+});
 sun.addEventListener('click', () => {
-  colorMode()
-})
+  colorMode();
+});
